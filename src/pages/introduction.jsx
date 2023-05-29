@@ -1,5 +1,7 @@
 import '../assets/css/introduction.css'
-import Navigation from '../components/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function IntroductionPage() {
     return (
@@ -11,6 +13,11 @@ export default function IntroductionPage() {
                 <div className='neon-button'>
                     <button>Hire Me</button>
                     <button>Let's Talk</button>
+                </div>
+                <div className='neon-button social-media'>
+                    <button><FontAwesomeIcon icon={faGithub} /></button>
+                    <button><FontAwesomeIcon icon={faLinkedinIn} /></button>
+                    <button><FontAwesomeIcon icon={faFacebookF} /></button>
                 </div>
             </div>
         </div>

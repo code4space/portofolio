@@ -41,7 +41,7 @@
     background-color: transparent;
     border: 1px solid #f3aa4e;
     padding: 10px;
-    font-weight: 600;
+    font-weight: 700;
     color: #f3aa4e;
     border-radius: 5px;
     margin-right: 15px;
@@ -69,8 +69,14 @@
 }
 
 .neon-button button:hover {
-    color: #f7e5ca;;
+    color: #111820;
 }
+
+.social-media {
+    position: absolute;
+    bottom: 5vh;
+}
+
 
 @keyframes slide-in {
     from {

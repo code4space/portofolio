@@ -1,0 +1,29 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 25px 10vw;
+    background-color: #111820;
+}
+
+.navigation ul {
+    display: flex;
+}
+
+.navigation ul li {
+    list-style: none;
+    margin-left: 40px;
+    color: #f7e5ca;
+    cursor: pointer;
+    position: relative;
+    animation: slide-in 1s ease-out;
+}
+
+.navigation h2 {
+    color: #f7e5ca;
+    position: relative;
+    animation: slide-in 1s ease-out;
+}

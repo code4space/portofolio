@@ -1,8 +1,10 @@
 import '../assets/css/introduction.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { useEffect, useRef } from 'react';
 
 export default function IntroductionPage() {
+
     return (
         <div className='page introduction' id='home'>
             <div className='profile'>
@@ -12,7 +14,7 @@ export default function IntroductionPage() {
                     in developing scalable web applications and working across the
                     full stack.</p>
                 <div className='neon-button'>
-                    <button style={{width: '200px'}}>Email Me</button>
+                    <button style={{ width: '200px' }}>Email Me</button>
                 </div>
                 <div className='neon-button social-media'>
                     <button><FontAwesomeIcon icon={faGithub} /></button>

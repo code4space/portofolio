@@ -1,16 +1,9 @@
 import { useEffect, useRef } from 'react';
 import '../assets/css/project.css'
 
-export default function ProjectPage({ onDivRef }) {
-    const divRef = useRef(null);
-    useEffect(() => {
-        if (divRef.current) {
-          const divHeight = divRef.current.offsetHeight;
-          onDivRef(divHeight);
-        }
-      }, [divRef.current.offsetHeight]);
+export default function ProjectPage() {
     return (
-        <div className="page project" id='work' ref={divRef}>
+        <div className="page project" id='work'>
             <h1 data-aos="fade-down"><span></span>Work</h1>
             <div className='card-project' data-aos="fade-down">
                 <div className='img-project'>

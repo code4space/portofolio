@@ -6,6 +6,7 @@ export default function Navigation() {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
@@ -28,10 +29,11 @@ export default function Navigation() {
     const handleScroll = () => {
       const scrollHeight = window.scrollY;
       const viewportHeight1 = window.innerHeight;
-      const viewportHeight2 = 2 * window.innerHeight;
+      const viewportHeight2 = window.innerHeight;
 
       if (scrollHeight < viewportHeight1) setActivePage(1);
-      else if (scrollHeight < viewportHeight2) setActivePage(2);
+      else if (scrollHeight < viewportHeight2-100) setActivePage(2);
+      else setActivePage(3)
     };
 
     window.addEventListener('scroll', handleScroll);

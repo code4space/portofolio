@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import IntroductionPage from './pages/introduction.jsx';
 import Navigation from './components/navigation.jsx';
 import WelcomPage from './pages/welcome.jsx';
@@ -23,18 +23,36 @@ const App = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const handleDivRef = (divHeight) => {
-    console.log('Received div height:', divHeight);
-  };
+  const lightRef = useRef(null);
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const light = lightRef.current;
+      if (light) {
+        const x = event.clientX;
+        const y = event.clientY;
+        light.style.left = `${x - 350}px`;
+        light.style.top = `${y - 350}px`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className='container'>
       {showWelcomePage ?
         <WelcomPage /> :
         <>
-          <Navigation />
+          <div className='light-container'>
+            <div className='light' ref={lightRef}></div>
+          </div>
+          <Navigation/>
           <IntroductionPage />
-          <ProjectPage onDivRef={handleDivRef}/>
+          <ProjectPage/>
           <ContactPage />
         </>
       }

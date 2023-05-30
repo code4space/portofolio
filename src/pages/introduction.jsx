@@ -1,23 +1,23 @@
 import '../assets/css/introduction.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { faInstagram, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function IntroductionPage() {
     return (
-        <div className='page introduction'>
+        <div className='page introduction' id='home'>
             <div className='profile'>
                 <h1>Hi, I'm William Wijaya</h1>
-                <h2>Fullstack Developer</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quia iusto deserunt provident iste hic quae eum neque corrupti vitae.</p>
+                <h2>Designer & Developer</h2>
+                <p>As a full stack developer and designer, I am interested
+                    in developing scalable web applications and working across the
+                    full stack.</p>
                 <div className='neon-button'>
-                    <button>Hire Me</button>
-                    <button>Let's Talk</button>
+                    <button style={{width: '200px'}}>Email Me</button>
                 </div>
                 <div className='neon-button social-media'>
                     <button><FontAwesomeIcon icon={faGithub} /></button>
                     <button><FontAwesomeIcon icon={faLinkedinIn} /></button>
-                    <button><FontAwesomeIcon icon={faFacebookF} /></button>
+                    <button><FontAwesomeIcon icon={faInstagram} /></button>
                 </div>
             </div>
         </div>

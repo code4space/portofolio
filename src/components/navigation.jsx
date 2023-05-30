@@ -1,16 +1,68 @@
-import '../assets/css/navigation.css'
+import { useEffect, useState } from 'react';
+import '../assets/css/navigation.css';
 
 export default function Navigation() {
-    return (
-        <div className='navigation'>
-            <h2>William.</h2>
-            <ul>
-                <li style={{fontWeight:'700', color:'#f3aa4e'}}>Home</li>
-                <li>About</li>
-                <li>Portofolio</li>
-                <li>Services</li>
-                <li>Contact</li>
-            </ul>
-        </div>
-    )
+  const [activePage, setActivePage] = useState(1);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const prevScrollPos = scrollPosition;
+
+      if (prevScrollPos > currentScrollPos) {
+        setIsNavVisible(true); // Scrolling upwards
+      } else {
+        setIsNavVisible(false); // Scrolling downwards
+      }
+
+      setScrollPosition(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollPosition]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = window.scrollY;
+      const viewportHeight1 = window.innerHeight;
+      const viewportHeight2 = 2 * window.innerHeight;
+
+      if (scrollHeight < viewportHeight1) setActivePage(1);
+      else if (scrollHeight < viewportHeight2) setActivePage(2);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navigationClass = isNavVisible ? '' : 'hideNav';
+
+  const handleChangePage = (target) => {
+    const targetElement = document.getElementById(target);
+    if (targetElement) {
+      const targetPosition = targetElement.offsetTop;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+      setScrollPosition(targetPosition);
+    }
+  };
+
+  return (
+    <div className={`navigation ${navigationClass}`}>
+      <h2 onClick={() => window.location.reload()}>William.</h2>
+      <ul>
+        <li onClick={() => handleChangePage('home')} style={activePage === 1 ? { fontWeight: '700', color: '#f3aa4e' } : null}>
+          Home
+        </li>
+        <li onClick={() => handleChangePage('work')} style={activePage === 2 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Work</li>
+        <li onClick={() => handleChangePage('contact')} style={activePage === 3 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Contact</li>
+        <li>Resume</li>
+      </ul>
+    </div>
+  );
 }

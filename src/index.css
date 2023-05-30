@@ -10,7 +10,22 @@ body {
   font-family: 'Montserrat';
 }
 
-#root {
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  background-color: #111820; /* Background color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #555555; /* Color of the scrollbar handle */
+  border-radius: 4px; /* Rounded corners of the handle */
+}
+
+.container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 100%;
+  background-color: #111820;
 }

@@ -29,6 +29,11 @@
 
 .img-project {
     width: 50%;
+    height: 40vh;
+    max-height: 260px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .img-project img {
@@ -63,23 +68,38 @@
     box-shadow: 0 10px 30px -15px rgb(0, 0, 0);
     color: #f7e5ca;
     margin-bottom: 20px;
+    z-index: 2;
 }
 
 .summary p {
     text-align: right;
 }
 
-.icon-detail, .build {
+.icon-detail,
+.build {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    column-gap: 15px;
+    row-gap: 5px;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+    .build {
+        max-width: 300px;
+    }
 }
 
 .icon-detail span {
     color: #f7e5ca;
     font-size: 30px;
     cursor: pointer;
+}
+
+.icon-detail span:hover {
+    color: #f3aa4e;
 }
 
 .build span {
@@ -94,8 +114,66 @@
     left: 0;
     right: auto;
     align-items: flex-start;
-} 
+}
 
-.card-project:nth-child(odd) .detail-card .summary p{
+.card-project:nth-child(odd) .detail-card .summary p {
     text-align: left;
+}
+
+/* mobile design */
+
+@media only screen and (max-width: 768px) {
+    .img-project {
+        width: 100%;
+        height: 70vh;
+        max-height: none;
+    }
+
+    .card-project {
+        margin-bottom: 100px;
+    }
+}
+
+.blur-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(17, 24, 32, 0.7) 0%, rgba(17, 24, 32, 1) 100%);
+    backdrop-filter: blur(2px);
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    z-index: 1;
+}
+
+.img-hover:hover {
+    opacity: 0.3;
+}
+
+.mobile-card {
+    display: flex;
+    padding: 0 15px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mobile-card h5 {
+    color: #f3aa4e;
+}
+
+.mobile-card h2 {
+    color: #f7e5ca;
+}
+
+.mobile-card p {
+    margin-top: 5px;
+    color: #aeaeae;
+}
+
+.mobile-card .build {
+    font-weight: 600;
+    color: #f7e5ca;
+    margin-top: 10px;
 }

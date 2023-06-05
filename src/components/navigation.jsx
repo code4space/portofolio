@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import '../assets/css/navigation.css';
 
-export default function Navigation() {
-  const [activePage, setActivePage] = useState(1);
+export default function Navigation({ activePage, setActivePage, isMobile }) {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  const [navbar, setNavbar] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,24 +24,10 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrollPosition]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollHeight = window.scrollY;
-      const viewportHeight1 = window.innerHeight;
-      const viewportHeight2 = window.innerHeight;
+  const navigationClass = (!isNavVisible && !navbar) ? 'hideNav' : ''
 
-      if (scrollHeight < viewportHeight1) setActivePage(1);
-      else if (scrollHeight < viewportHeight2-100) setActivePage(2);
-      else setActivePage(3)
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navigationClass = isNavVisible ? '' : 'hideNav';
-
-  const handleChangePage = (target) => {
+  const handleChangePage = (target, page) => {
+    if (isMobile && navbar) setNavbar(false)
     const targetElement = document.getElementById(target);
     if (targetElement) {
       const targetPosition = targetElement.offsetTop;
@@ -52,19 +37,48 @@ export default function Navigation() {
       });
       setScrollPosition(targetPosition);
     }
+    setActivePage(page)
   };
 
+  function handleResume () {
+    window.open('https://drive.google.com/file/d/17MerATAwB_p5FxgiDwMJa-R8Gjox2ijd/view', '_blank');
+  }
+
   return (
-    <div className={`navigation ${navigationClass}`}>
-      <h2 onClick={() => window.location.reload()}>William.</h2>
-      <ul>
-        <li onClick={() => handleChangePage('home')} style={activePage === 1 ? { fontWeight: '700', color: '#f3aa4e' } : null}>
-          Home
-        </li>
-        <li onClick={() => handleChangePage('work')} style={activePage === 2 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Work</li>
-        <li onClick={() => handleChangePage('contact')} style={activePage === 3 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Contact</li>
-        <li>Resume</li>
-      </ul>
-    </div>
+    <>
+      {(isMobile && navbar) ? <div className='nav-bg'></div> : ''}
+      <div className={`navigation ${navigationClass}`}>
+        <h2 onClick={() => window.location.reload()}>William.</h2>
+        {isMobile ?
+          <div>
+            <div className='nav-container' style={navbar ? null : { maxWidth: 0 }}>
+              <div onClick={() => {setNavbar(false)}} style={{position: 'absolute', width: '100%', height: '100%'}}></div>
+              <div className='nav-content'>
+                <ul>
+                  <li onClick={() => handleChangePage('home')}>
+                    Home
+                  </li>
+                  <li onClick={() => handleChangePage('work')} >Work</li>
+                  <li onClick={() => handleChangePage('contact')} >Contact</li>
+                  <li onClick={handleResume}>Resume</li>
+                </ul>
+              </div>
+            </div>
+            <div className={navbar ? 'navbar-button active-navbar' : 'navbar-button deactive-navbar'} onClick={() => setNavbar(!navbar)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          :
+          <ul>
+            <li onClick={() => handleChangePage('home', 1)} style={activePage === 1 ? { fontWeight: '700', color: '#f3aa4e' } : null}>
+              Home
+            </li>
+            <li onClick={() => handleChangePage('work', 2)} style={activePage === 2 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Work</li>
+            <li onClick={() => handleChangePage('contact', 3)} style={activePage === 3 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Contact</li>
+            <li onClick={handleResume}>Resume</li>
+          </ul>}
+      </div></>
   );
 }

@@ -13,11 +13,13 @@
 .contact h1 {
     color: #f7e5ca;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .contact p {
     text-align: center;
-    width: 600px;
+    width: 70vw;
+    max-width: 600px;
     color: rgb(133, 133, 133);
     margin-bottom: 30px;
 }
@@ -26,4 +28,6 @@
     position: absolute;
     bottom: 50px;
     color: rgb(133, 133, 133);
+    text-align: center;
+    width: 90vw;
 }

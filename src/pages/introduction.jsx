@@ -1,7 +1,6 @@
 import '../assets/css/introduction.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { useEffect, useRef } from 'react';
 
 export default function IntroductionPage({setActivePage}) {
     function handleButton (linkTo) {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../assets/css/navigation.css';
+import logo_w from '../assets/w.png'
 
 export default function Navigation() {
   const [activePage, setActivePage] = useState(1);
@@ -56,7 +57,7 @@ export default function Navigation() {
 
   return (
     <div className={`navigation ${navigationClass}`}>
-      <h2 onClick={() => window.location.reload()}>William.</h2>
+      <h2 onClick={() => window.location.reload()}><img src={logo_w} /> William</h2>
       <ul>
         <li onClick={() => handleChangePage('home')} style={activePage === 1 ? { fontWeight: '700', color: '#f3aa4e' } : null}>
           Home

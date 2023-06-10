@@ -75,3 +75,11 @@
         transform: translateY(10px) rotate(0);
     }
 }
+
+@media only screen and (max-width: 300px) {
+
+    #welcome span {
+        font-size: 20px;
+        margin: 0 5px;
+    }
+}

@@ -8,19 +8,34 @@ import ProjectPage from './pages/projects.jsx';
 import ContactPage from './pages/contact.jsx';
 
 const App = () => {
+  const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const [activePage, setActivePage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     AOS.init();
-  }, [])
 
-  const [showWelcomePage, setShowWelcomePage] = useState(true);
-  useEffect(() => {
     // Hide the welcome page after 3 seconds
     const timeout = setTimeout(() => {
       setShowWelcomePage(false);
     }, 4000);
 
-    // Clean up the timeout when the component unmounts
-    return () => clearTimeout(timeout);
+    const handleResize = () => {
+      const isMobileDevice = window.innerWidth <= 768; // Set the breakpoint for mobile devices
+
+      setIsMobile(isMobileDevice);
+    };
+
+    // Initial device check
+    handleResize();
+
+    // Update device type when the window is resized
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const lightRef = useRef(null);
@@ -36,24 +51,32 @@ const App = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-
+    const container = document.querySelector('.container');
+    container.addEventListener('scroll', handleScroll);
+    
     return () => {
+      container.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+    const handleScroll = () => {
+    const container = document.querySelector('.container');
+    container.style.scrollbarWidth = '';
+  };
 
   return (
     <div className='container'>
       {showWelcomePage ?
         <WelcomPage /> :
         <>
-          <div className='light-container'>
+          {!isMobile && <div className='light-container'>
             <div className='light' ref={lightRef}></div>
-          </div>
-          <Navigation/>
-          <IntroductionPage />
-          <ProjectPage/>
-          <ContactPage />
+          </div>}
+          <Navigation activePage={activePage} setActivePage={setActivePage} isMobile={isMobile}/>
+          <IntroductionPage setActivePage={setActivePage}/>
+          <ProjectPage setActivePage={setActivePage} isMobile={isMobile}/>
+          <ContactPage setActivePage={setActivePage}/>
         </>
       }
     </div>

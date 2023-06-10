@@ -14,7 +14,8 @@
 }
 
 .profile {
-    width: 50%;
+    width: 80%;
+    max-width: 500px;
 }
 
 .profile h1 {
@@ -27,6 +28,7 @@
 .profile h2 {
     color: #f3aa4e;
     margin-bottom: 15px;
+    margin-top: 5px;
     position: relative;
     animation: slide-in 1s ease-out 0.7s;
     animation-fill-mode: both;

@@ -62,6 +62,16 @@ export default function ProjectPage({ setActivePage, isMobile }) {
         );
     }
 
+    const projectPokemon = {
+        release: "Ongoing",
+        projectName: "Pokémon Game",
+        description: `I've built this neon style Tic Tac Toe game using React. It's pretty simple and has this awesome neon light. You can check out the code on my github and enjoy the game!`,
+        build: ["React", "Vite"],
+        linkTo: 'https://neon-tic-tac-toe.vercel.app/',
+        github: 'https://github.com/code4space/TicTacToe',
+        image: ticTacToe
+    };
+
     const projectTicTacToe = {
         release: "2023",
         projectName: "Tic Tac Toe",
@@ -93,6 +103,7 @@ export default function ProjectPage({ setActivePage, isMobile }) {
             <h1 data-aos="fade-down">
                 <span></span>Work
             </h1>
+            {/* {card(projectPokemon)} */}
             {card(projectTicTacToe)}
             {card(projectAdmin)}
         </div>

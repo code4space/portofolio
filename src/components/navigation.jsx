@@ -49,7 +49,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
     <>
       {(isMobile && navbar) ? <div className='nav-bg'></div> : ''}
       <div className={`navigation ${navigationClass}`}>
-        <h2 onClick={() => window.location.reload()}>William.</h2>
+        <h2 onClick={() => window.location.reload()}> <img src={logo_w} alt="logo_w" /> {!isMobile && 'William.'}</h2>
         {isMobile ?
           <div>
             <div className='nav-container' style={navbar ? null : { maxWidth: 0 }}>

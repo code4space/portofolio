@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "../assets/css/project.css";
 import ticTacToe from '../assets/tictactoe.png'
+import admin from '../assets/admin.png'
+import pokemon from '../assets/pokemon.png'
 
 export default function ProjectPage({ setActivePage, isMobile }) {
     function handleButton(linkTo) {
@@ -71,6 +73,26 @@ export default function ProjectPage({ setActivePage, isMobile }) {
         image: ticTacToe
     };
 
+    const projectAdmin = {
+        release: "2023",
+        projectName: "Admin tamplate",
+        description: `I develop React-based admin templates that are responsive and leverage the EChart library for interactive charts.`,
+        build: ["React", "Vite", 'EChart'],
+        linkTo: 'https://admin-two-tau.vercel.app',
+        github: 'https://github.com/code4space/admin-tamplate',
+        image: admin
+    };
+
+    const projectPokemon = {
+        release: "2023",
+        projectName: "Pokemon Collection",
+        description: `I am developing a web-based Pokémon Gacha game using React. For the server-side, I am utilizing Express.js. If you are interested in trying out my game, please ensure that you have the server running since I haven't deployed it yet. You can find instructions on how to run the server-side on my GitHub repository.`,
+        build: ["React", "Vite", 'Express JS'],
+        linkTo: 'https://pokemon-game-kappa.vercel.app/',
+        github: 'https://github.com/code4space/pokemonGame-frontEnd',
+        image: pokemon
+    };
+
     return (
         <div
             className="page project"
@@ -83,6 +105,9 @@ export default function ProjectPage({ setActivePage, isMobile }) {
                 <span></span>Work
             </h1>
             {card(projectTicTacToe)}
+            {card(projectAdmin)}
+            {card(projectPokemon)}
+            
         </div>
     );
 }

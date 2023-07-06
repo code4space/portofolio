@@ -75,10 +75,10 @@ export default function ProjectPage({ setActivePage, isMobile }) {
 
     const projectAdmin = {
         release: "2023",
-        projectName: "Admin tamplate",
+        projectName: "Admin Tamplate",
         description: `I develop React-based admin templates that are responsive and leverage the EChart library for interactive charts.`,
         build: ["React", "Vite", 'EChart'],
-        linkTo: 'https://admin-two-tau.vercel.app',
+        linkTo: 'https://admin-two-tau.vercel.app/',
         github: 'https://github.com/code4space/admin-tamplate',
         image: admin
     };
@@ -104,6 +104,7 @@ export default function ProjectPage({ setActivePage, isMobile }) {
             <h1 data-aos="fade-down">
                 <span></span>Work
             </h1>
+            {/* {card(projectPokemon)} */}
             {card(projectTicTacToe)}
             {card(projectAdmin)}
             {card(projectPokemon)}

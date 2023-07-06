@@ -25,12 +25,27 @@
     transition: 0.5s all ease;
 }
 
+.navigation img {
+    filter: invert(90);
+    position: relative;
+    animation: slide-in 1s ease-out;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
 .navigation h2 {
     color: #f7e5ca;
     position: relative;
     animation: slide-in 1s ease-out;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
 
 .isActive {
     font-weight: 700;

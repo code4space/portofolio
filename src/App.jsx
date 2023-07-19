@@ -14,10 +14,9 @@ const App = () => {
   useEffect(() => {
     AOS.init();
 
-    // Hide the welcome page after 3 seconds
     const timeout = setTimeout(() => {
       setShowWelcomePage(false);
-    }, 4000);
+    }, 2200);
 
     const handleResize = () => {
       const isMobileDevice = window.innerWidth <= 768; // Set the breakpoint for mobile devices

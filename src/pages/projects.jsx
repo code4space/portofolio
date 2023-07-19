@@ -3,6 +3,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "../assets/css/project.css";
 import ticTacToe from '../assets/tictactoe.png'
 import admin from '../assets/admin.png'
+import pokemon from '../assets/pokemon.png'
 
 export default function ProjectPage({ setActivePage, isMobile }) {
     function handleButton(linkTo) {
@@ -62,16 +63,6 @@ export default function ProjectPage({ setActivePage, isMobile }) {
         );
     }
 
-    const projectPokemon = {
-        release: "Ongoing",
-        projectName: "Pokémon Game",
-        description: `I've built this neon style Tic Tac Toe game using React. It's pretty simple and has this awesome neon light. You can check out the code on my github and enjoy the game!`,
-        build: ["React", "Vite"],
-        linkTo: 'https://neon-tic-tac-toe.vercel.app/',
-        github: 'https://github.com/code4space/TicTacToe',
-        image: ticTacToe
-    };
-
     const projectTicTacToe = {
         release: "2023",
         projectName: "Tic Tac Toe",
@@ -92,6 +83,16 @@ export default function ProjectPage({ setActivePage, isMobile }) {
         image: admin
     };
 
+    const projectPokemon = {
+        release: "2023",
+        projectName: "Pokemon Collection",
+        description: <span>I am developing a web-based Pokémon Gacha game using React. For the server-side, I am utilizing Express.js. If you are interested in trying out my game, please ensure that you have the server running since I haven't deployed it yet. You can find instructions on how to run the server-side on my <a style={{color: "inherit"}} target="_blank" href="https://github.com/code4space/pokemonGame-backEnd">GitHub repository</a>.</span>,
+        build: ["React", "Vite", 'Express JS'],
+        linkTo: 'https://pokemon-game-kappa.vercel.app/',
+        github: 'https://github.com/code4space/pokemonGame-frontEnd',
+        image: pokemon
+    };
+
     return (
         <div
             className="page project"
@@ -106,6 +107,8 @@ export default function ProjectPage({ setActivePage, isMobile }) {
             {/* {card(projectPokemon)} */}
             {card(projectTicTacToe)}
             {card(projectAdmin)}
+            {card(projectPokemon)}
+            
         </div>
     );
 }

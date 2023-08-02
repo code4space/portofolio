@@ -79,9 +79,9 @@ export default function ProjectPage({ setActivePage, isMobile }) {
         {
             release: "2023",
             projectName: "Pokemon Collection",
-            description: <span>I am developing a web-based Pokémon Gacha game using React. For the server-side, I am utilizing Express.js. If you are interested in trying out my game, please ensure that you have the server running since I haven't deployed it yet. You can find instructions on how to run the server-side on my <a style={{ color: "inherit" }} target="_blank" href="https://github.com/code4space/pokemonGame-backEnd">GitHub repository</a>.</span>,
+            description: <span>I am developing a web-based Pokémon Gacha game using React. For the server-side, I am utilizing Express.js. If you are interested in trying out my game locally, please ensure that you have the server running. You can find instructions on how to run the server-side on my <a style={{ color: "inherit" }} target="_blank" href="https://github.com/code4space/pokemonGame-backEnd-NoSQL">GitHub repository</a>.</span>,
             build: ["React", "Vite", 'Express JS'],
-            linkTo: 'https://pokemon-game-kappa.vercel.app/',
+            linkTo: 'https://pokemon-collection-game.vercel.app/',
             github: 'https://github.com/code4space/pokemonGame-frontEnd',
             image: pokemon
         },

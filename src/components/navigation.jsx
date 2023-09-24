@@ -42,7 +42,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
   };
 
   function handleResume () {
-    window.open('https://drive.google.com/file/d/17MerATAwB_p5FxgiDwMJa-R8Gjox2ijd/view', '_blank');
+    window.open('https://drive.google.com/file/d/1rW79hMm_z6W8l2QFhdJsSVmQGOsHdzsT/view?usp=sharing', '_blank');
   }
 
   return (

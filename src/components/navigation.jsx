@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../assets/css/navigation.css';
-import logo_w from '../assets/w.png'
+import logo_w from '../assets/W.png'
 
 export default function Navigation({ activePage, setActivePage, isMobile }) {
   const [isNavVisible, setIsNavVisible] = useState(true);

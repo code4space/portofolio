@@ -13,7 +13,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
       const prevScrollPos = scrollPosition;
 
       if (prevScrollPos > currentScrollPos) {
-        setIsNavVisible(true); // Scrolling upwards
+        setIsNavVisible(true); // Scrolling upwards 
       } else {
         setIsNavVisible(false); // Scrolling downwards
       }

@@ -13,9 +13,9 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
       const prevScrollPos = scrollPosition;
 
       if (prevScrollPos > currentScrollPos) {
-        setIsNavVisible(true); // Scrolling upwards 
+        setIsNavVisible(true);
       } else {
-        setIsNavVisible(false); // Scrolling downwards
+        setIsNavVisible(false);
       }
 
       setScrollPosition(currentScrollPos);
@@ -42,7 +42,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
   };
 
   function handleResume () {
-    window.open('https://drive.google.com/file/d/1XAHViKWeGu2PIgzoj-cWiGwVrcB4cecK/view?usp=drive_link', '_blank');
+    window.open('/resume.pdf', '_blank');
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
                   <li onClick={() => handleChangePage('home')}>
                     Home
                   </li>
-                  <li onClick={() => handleChangePage('work')} >Work</li>
+                  <li onClick={() => handleChangePage('showcase')} >Showcase</li>
                   <li onClick={() => handleChangePage('contact')} >Contact</li>
                   <li onClick={handleResume}>Resume</li>
                 </ul>
@@ -76,7 +76,7 @@ export default function Navigation({ activePage, setActivePage, isMobile }) {
             <li onClick={() => handleChangePage('home', 1)} style={activePage === 1 ? { fontWeight: '700', color: '#f3aa4e' } : null}>
               Home
             </li>
-            <li onClick={() => handleChangePage('work', 2)} style={activePage === 2 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Work</li>
+            <li onClick={() => handleChangePage('showcase', 2)} style={activePage === 2 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Showcase</li>
             <li onClick={() => handleChangePage('contact', 3)} style={activePage === 3 ? { fontWeight: '700', color: '#f3aa4e' } : null}>Contact</li>
             <li onClick={handleResume}>Resume</li>
           </ul>}

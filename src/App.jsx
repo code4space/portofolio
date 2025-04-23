@@ -24,13 +24,8 @@ const App = () => {
       setIsMobile(isMobileDevice);
     };
 
-    // Initial device check
     handleResize();
-
-    // Update device type when the window is resized
     window.addEventListener('resize', handleResize);
-
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
       clearTimeout(timeout);

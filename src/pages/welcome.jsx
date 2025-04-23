@@ -36,7 +36,7 @@ export default function WelcomPage() {
                         </g>
                     </g>
                 </g>
-                <path id="signature" d="M42 16L68 108H74.5L103 15L10.5 41V48.5L105 75.5" stroke="white" stroke-width="12" />
+                <path id="signature" d="M42 16L68 108H74.5L103 15L10.5 41V48.5L105 75.5" stroke="white" strokeWidth="12" />
             </svg>
 
         </div>

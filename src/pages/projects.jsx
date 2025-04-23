@@ -2,71 +2,84 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "../assets/css/project.css";
 import ticTacToe from '../assets/tictactoe.png'
+import erp from '../assets/erp.png'
 import admin from '../assets/admin.png'
 import pokemon from '../assets/pokemon.png'
 import stackun from '../assets/stackun.png'
 
-export default function ProjectPage({ setActivePage, isMobile }) {
+function CardProject({ release, projectName, description, build, linkTo, image, isMobile, github }) {
+
     function handleButton(linkTo) {
         window.open(linkTo, '_blank');
     }
 
-    function card(project) {
-        return (
-            project.map((data, i) => {
-                return <div className="card-project" data-aos="fade-down" key={i}>
-                    <div className="img-project" onClick={() => { handleButton(data.linkTo) }}>
-                        <img
-                            src={data.image}
-                            alt="my_project_img"
-                        />
-                        {isMobile ? (
-                            <div className="mobile-card blur-img">
-                                <h5>{data.release}</h5>
-                                <h2>{data.projectName}</h2>
-                                <p>{data.description}</p>
-                                <div className="build">
-                                    {data.build.map((el, i) => {
-                                        return (<span key={i}>{el}</span>)
-                                    })}
-                                </div>
-                                <div className="icon-detail">
-                                    <span onClick={() => { handleButton(data.github) }}>
-                                        <FontAwesomeIcon icon={faGithub} />
-                                    </span>
-                                    <span onClick={() => { handleButton(data.linkTo) }}>&#8618;</span>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="blur-img img-hover"></div>
-                        )}
-                    </div>
-                    {isMobile ? null : (
-                        <div className="detail-card">
-                            <h5>{data.release}</h5>
-                            <h2>{data.projectName}</h2>
-                            <div className="summary">
-                                <p>{data.description}</p>
-                            </div>
-                            <div className="build">
-                                {data.build.map((el, i) => {
-                                    return (<span key={i}>{el}</span>)
-                                })}
-                            </div>
-                            <div className="icon-detail">
-                                <span onClick={() => { handleButton(data.github) }}>
+    return (
+        <div className="card-project" data-aos="fade-down" >
+            <div className="img-project" onClick={() => { handleButton(linkTo) }}>
+                <img
+                    src={image}
+                    alt="my_project_img"
+                />
+                {isMobile ? (
+                    <div className="mobile-card blur-img">
+                        <h5>{release}</h5>
+                        <h2>{projectName}</h2>
+                        <p>{description}</p>
+                        <div className="build">
+                            {build.map((el, i) => {
+                                return (<span key={i}>{el}</span>)
+                            })}
+                        </div>
+                        <div className="icon-detail">
+                            {github ? (
+                                <span onClick={() => { handleButton(github) }}>
                                     <FontAwesomeIcon icon={faGithub} />
                                 </span>
-                                <span onClick={() => { handleButton(data.linkTo) }}>&#8618;</span>
-                            </div>
+                            ) : null}
+                            <span onClick={() => { handleButton(linkTo) }}>&#8618;</span>
                         </div>
-                    )}
+                    </div>
+                ) : (
+                    <div className="blur-img img-hover"></div>
+                )}
+            </div>
+            {isMobile ? null : (
+                <div className="detail-card">
+                    <h5>{release}</h5>
+                    <h2>{projectName}</h2>
+                    <div className="summary">
+                        <p>{description}</p>
+                    </div>
+                    <div className="build">
+                        {build.map((el, i) => {
+                            return (<span >{el}</span>)
+                        })}
+                    </div>
+                    <div className="icon-detail">
+                        {github ? (
+                            <span onClick={() => { handleButton(github) }}>
+                                <FontAwesomeIcon icon={faGithub} />
+                            </span>
+                        ) : null}
+                        <span onClick={() => { handleButton(linkTo) }}>&#8618;</span>
+                    </div>
                 </div>
-            })
-        );
-    }
+            )}
+        </div>
+    )
+}
+
+export default function ProjectPage({ setActivePage, isMobile }) {
 
     const project = [
+        {
+            release: "2024",
+            projectName: "ERP Demo",
+            description: `'A modern, web-based ERP system designed to streamline and manage core business processes across departments. this app delivers a clean, responsive, and user-friendly interface for enterprise users.',`,
+            build: ["React", "Vite", 'MUI', 'Tailwind'],
+            linkTo: 'https://demo-erp-gray.vercel.app',
+            image: erp
+        },
         {
             release: "2023",
             projectName: "Admin Tamplate",
@@ -108,15 +121,17 @@ export default function ProjectPage({ setActivePage, isMobile }) {
     return (
         <div
             className="page project"
-            id="work"
+            id="showcase"
             onMouseEnter={() => {
                 setActivePage(2);
             }}
         >
             <h1 data-aos="fade-down">
-                <span></span>Work
+                <span></span>Showcase
             </h1>
-            {card(project)}
+            {project.map((data, i) => {
+                return <CardProject key={i} {...data} isMobile={isMobile} />
+            })}
         </div>
     );
 }
